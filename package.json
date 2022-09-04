@@ -1,0 +1,34 @@
+{
+  "name": "mushcode",
+  "displayName": "MUSHCode",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "mush",
+        "aliases": [
+          "MUSHCode",
+          "mush"
+        ],
+        "extensions": [
+          ".mu"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mush",
+        "scopeName": "text.mush",
+        "path": "./syntaxes/mush.tmLanguage.json"
+      }
+    ]
+  }
+}
