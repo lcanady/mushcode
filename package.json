@@ -5,12 +5,32 @@
   "repository": "https://github.com/lcanady/mushcode",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.71.0"
+    "vscode": "^1.70.1"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Formatters"
   ],
+  "activationEvents": [
+    "onLanguage:mushcode",
+    "onCommand:extension.format"
+  ],
+  "main": "./extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "extension.format",
+        "title": "Format MUSHCode"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.format",
+          "group": "navigation"
+        }
+      ]
+    },
     "languages": [
       {
         "id": "mush",
@@ -31,5 +51,8 @@
         "path": "./syntaxes/mush.tmLanguage.json"
       }
     ]
+  },
+  "dependencies": {
+    "@digibear/mush-format": "^1.1.3"
   }
 }
