@@ -3,7 +3,7 @@
   "displayName": "MUSHCode",
   "description": "",
   "repository": "https://github.com/lcanady/mushcode",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.70.1"
   },
