@@ -5,7 +5,7 @@
   "repository": "https://github.com/lcanady/mushcode",
   "version": "0.1.0",
   "engines": {
-    "vscode": "^1.70.1"
+    "vscode": "^1.71.0"
   },
   "categories": [
     "Programming Languages",
@@ -13,20 +13,62 @@
   ],
   "activationEvents": [
     "onLanguage:mushcode",
-    "onCommand:extension.format"
+    "onCommand:extension.format",
+    "onCommand:extension.postSelection"
   ],
   "main": "./extension.js",
   "contributes": {
+    "configuration": {
+      "title": "MUSHCode",
+      "properties": {
+        "game.dbref": {
+          "type": "string",
+          "default": "",
+          "description": "The dbref of your API object."
+        },
+        "game.password": {
+          "type": "string",
+          "default": "",
+          "description": "The Password for your RhostMUSH game."
+        },
+        "game.host": {
+          "type": "string",
+          "default": "",
+          "description": "The Hostname for your RhostMUSH game."
+        },
+        "game.port": {
+          "type": "number",
+          "default": 4203,
+          "description": "The Port for your RhostMUSH game."
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "extension.postSelection",
+        "key": "ctrl+shift+f",
+        "mac": "cmd+shift+f",
+        "when": "editorTextFocus"
+      }
+    ],
     "commands": [
       {
         "command": "extension.format",
         "title": "Format MUSHCode"
+      },
+      {
+        "command": "extension.postSelection",
+        "title": "Post Formatted Code to Game"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "command": "extension.format",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.postSelection",
           "group": "navigation"
         }
       ]
@@ -39,7 +81,9 @@
           "mush"
         ],
         "extensions": [
-          ".mu"
+          ".mu",
+          ".mush",
+          ".mux"
         ],
         "configuration": "./language-configuration.json"
       }
@@ -53,6 +97,7 @@
     ]
   },
   "dependencies": {
-    "@digibear/mush-format": "^1.1.3"
+    "@digibear/mush-format": "^1.1.3",
+    "axios": "^0.27.2"
   }
 }
