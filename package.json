@@ -21,7 +21,7 @@
     "onCommand:extension.format",
     "onCommand:extension.postSelection"
   ],
-  "main": "./out/main.js",
+  "main": "out/main.js",
   "contributes": {
     "configuration": {
       "title": "MUSHCode",
