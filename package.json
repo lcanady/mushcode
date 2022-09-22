@@ -1,8 +1,9 @@
 {
   "name": "mushcode",
   "displayName": "MUSHCode",
-  "description": "",
+  "description": "A softcode unformatter+",
   "repository": "https://github.com/lcanady/mushcode",
+  "icon": "mushcode.png",
   "version": "0.3.2",
   "engines": {
     "vscode": "^1.71.0"
