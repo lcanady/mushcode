@@ -18,6 +18,6 @@ You can also se the keyboard shortcut `ctrl-shift-f` to send the code to RHOST.
 
 ## development
 ```
-git clone https//github.com/brucek/mushcode.git
+git clone https//github.com/lcanady/mushcode.git
 npm install
 ```
