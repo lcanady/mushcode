@@ -16,6 +16,110 @@ You can also se the keyboard shortcut `ctrl-shift-f` to send the code to RHOST.
 
 * [1] http://rhostmush.org
 
+
+## Formatting Rules
+
+The rules of the game are pretty simple! If the first column of a line isn't a comment, space or newline, it interprets it as the beginning of a line. If your line begins with any of the above things, it'll be removed. An example:
+
+```
+// This line won't render
+&command.cmd #123 = $things:
+  @pemit %#=And Stuff. // this line will be added to the first.
+
+- // A single dash on a line makes an extra return in
+  // the compressed code
+
+@@ This comment will appear in the compressed code.
+@@ Great for leaving notes in your final compressed code block!
+```
+
+Translates to:
+
+```
+&command.cmd #123=$things: @pemit %#=And Stuff
+
+@@ This comment will appear in the compressed code.
+@@ Great for leaving notes in your final compressed code block!
+```
+
+## Meta Tags
+
+Meta tags are a way to add extra functionality to your formatted mushcode scripts. They cover things like importing other files and mushc scripts, to controlling conditional formatting of compile-time commands.
+
+### `#include <URL or Path>`
+
+`#include` allows you to add mushcode from a url into your code before processing. If path is given with a file name, it will open that file to use as it's starting point from the last given directory, or the base of the project. [Example Repo](https://github.com/lcanady/archive-test.git) for a dummy implementation.
+
+```
+#include https://raw.githubusercontent.com/lcanady/archive-test/main/index.mu
+
+// ... More code ...
+```
+
+### `#file /path/to/file.txt`
+
+This meta-tag will import a file like `#include` but will add mush comments `@@` to every line, making a note for anyone reading through your compressed code source. This is great for offering things like install instructions, and licenses.
+
+**`text.txt`**
+
+```
+This is a test file.
+It's a multi-line file.
+```
+
+**`index.mush`**
+
+```
+#file ./text.txt
+```
+
+**results**
+
+```
+@@ This is a test file.
+@@ It's a multi-line file.
+```
+
+### `@define`
+
+`@define` allows you to save a few keystrokes, and `@define` your own directives Defines, when used later, will be replaced with whatever code you give them. Just remember! Defines follow the same basic formatting rules. Any time line starts with anything other than a space - it counts as a new command.
+
+`Tests` are regular expressions as strings. This means that spaces should be entered as a space " ".
+
+```
+@define @te[st]+ (.*) {
+think This is a
+  test:
+  $1
+}
+
+@test Foo
+```
+
+Then later, when the formatter is run, the above example becomes:
+
+```
+think This is a test: Foo
+```
+
+### `@debug`
+
+The `@debug` directive tells the preprocessor that you would like to include any `#debug {}` meta-tags. The closing curly-brace `}` of the `#debug` block must be on it's own line, as the first character or else it won't be recognized.
+
+```
+@debug
+
+// ...
+
+#debug {
+
+think %chThis will be included in the processed code!%cn
+
+} // Make sure the closing curly-brace is the first character on
+  // a new line!
+```
+
+
 ## development
 ```
 git clone https//github.com/lcanady/mushcode.git
