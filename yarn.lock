@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@digibear/mush-format@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-1.2.1.tgz#3929436becbee8c4c45187721cfa90bfa276a3b5"
-  integrity sha512-kx2ZKRkoY8th1rca8efHYZ+KocSxNKtJxfHfj/QwOKh83Lf7gi2p+WOp+0xaLlPiBWSsMzdTQ8Hp8bXBzBSrvw==
+"@digibear/mush-format@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@digibear/mush-format/-/mush-format-1.2.2.tgz#3dc12f33272a3613d49ca24955e534ff7565277a"
+  integrity sha512-Wj70+CEGKQSrCFQHIvVwU+BH+aztUiPVOEwJxeXUq1U0actoOnWAEnXQCD1oIwgTeCJUr+NVjpIgsMr41gqH2g==
   dependencies:
     "@types/node" "^17.0.42"
     "@types/valid-url" "^1.0.3"
