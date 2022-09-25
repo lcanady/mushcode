@@ -1,6 +1,7 @@
 const vscode = require("vscode");
 const { formatter } = require("@digibear/mush-format");
 const { default: axios } = require("axios");
+const path = require("path");
 
 function activate(context) {
   let disposable = vscode.commands.registerCommand(
@@ -12,9 +13,11 @@ function activate(context) {
         return;
       }
       const document = editor.document;
+      let filepath = editor.document.fileName;
+      filepath = path.dirname(filepath);
       const selection = editor.selection;
       const text = document.getText(selection);
-      const formatted = await formatter.format(text);
+      const formatted = await formatter.format(text, filepath);
       vscode.env.clipboard.writeText(formatted.data);
     }
   );

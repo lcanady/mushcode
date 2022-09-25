@@ -104,8 +104,9 @@
     ]
   },
   "dependencies": {
-    "@digibear/mush-format": "^1.2.2",
-    "axios": "^0.27.2"
+    "@digibear/mush-format": "^1.2.3",
+    "axios": "^0.27.2",
+    "mush-format": "file:../mush-format"
   },
   "devDependencies": {
     "esbuild": "^0.15.7"
